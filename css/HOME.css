@@ -1,0 +1,61 @@
+/********** Header section **********/
+.header-image {
+    height: 25em;
+}
+
+@media screen and (max-width: 1000px){
+    .header-image {
+        height: 12em;
+    }
+}
+
+.header-text h1 {
+    font-size: 50px;
+}
+
+/********** About us section **********/
+#about-us a {
+    color: black;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+#about-us a:hover {
+    font-weight: 500;
+}
+
+/********** Top 4 picks **********/
+#top-4-picks .card {
+    width: 285px;
+}
+
+#top-4-picks img {
+    width: 100%;
+    height: auto;
+}
+
+/********** Feedback cards **********/
+.stars ion-icon {
+    padding-bottom: 3px;
+}
+
+.card feedback {
+    padding: 20px;
+    width: 500px;
+    justify-content: center;
+}
+
+
+card-title {
+    font-size: 1.5em; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+}
+
+/* Add styles for the paragraph text */
+.card-text p {
+    font-size: 1em; 
+    line-height: 1.4; 
+    font-family:Arial, Helvetica, sans-serif;
+}
+

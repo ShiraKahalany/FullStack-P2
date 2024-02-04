@@ -1,0 +1,81 @@
+
+@media screen and (max-width: 900px){ 
+    body{
+        font-size:20px ; 
+    }
+    .card {
+        width: 40%; /* Adjust the width for smaller screens */
+    }
+
+    .row {
+        flex-wrap: wrap;
+        align-items: center;
+    } 
+
+}
+
+
+@media screen and (max-width: 600px){ 
+    body{
+        font-size: 13px;
+    }
+    .card {
+        width: 75%; /* Adjust the width for smaller screens */
+    }
+
+    .row {
+        flex-wrap: wrap;
+        align-items: center;
+    } 
+
+    table {
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
+
+    table tr td,
+    table tr th {
+        padding: 8px; /* Adjust cell padding for smaller screens */
+    }
+
+    table tr td:first-child,
+    table tr th:first-child {
+        border-right-style: initial; /* Remove right border on the first column for smaller screens */
+    }
+
+    .shipping-table-head {
+        border-bottom-style: solid; /* Change border style for table header on smaller screens */
+    }
+    
+    nav {
+        flex-direction: column-reverse;
+    }
+    nav.top-nav ul {
+        text-align: center;
+    }
+
+
+    embed.header-embed {
+        height: 4.8em;
+    }
+
+    nav.top-nav {
+        flex-direction: column-reverse;
+    }
+    nav.top-nav ul {
+        text-align: center;
+    }
+
+    
+    video{
+        width:  250px;
+        height: 490px;
+    }
+
+    .iframi {
+        width: 240px;
+        height: 90px;
+        margin-top: 15%;
+        margin-bottom: 15%;
+    }
+
+}
