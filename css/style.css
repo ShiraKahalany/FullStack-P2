@@ -9,7 +9,6 @@ body{
 }
 
 .container {
-    padding: 2% 5% 5% 5%;
     min-height: 100vh;
     text-align: center;
     background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgb(250, 250, 250), rgb(187, 164, 203));
@@ -40,17 +39,17 @@ embed {
 
 
 /**** Image header and text ****/
+
 .header-image {
-    background-image: url("/Images/c.png");
-    /* background-image: url("/Images/oooo.jpg"); */
+    height: 25em;
+    background-image: url("/img/background.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-}
+  }
 
 .header-text {
-    -webkit-text-stroke: 1px #450349;
     text-align: center;
     position: absolute;
     top: 50%;
