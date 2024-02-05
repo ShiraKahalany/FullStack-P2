@@ -29,15 +29,9 @@ h1, h2 {
     padding: 7% 0% 0% 0%;
     text-align: center;
 }
-
-embed.header-embed {
-    height: 3.5em;
-}
-
-embed.footer-embed {
-    height: 18em;
-    margin-top: 7%;
-    margin-bottom: 0%;
+ 
+embed {
+    width: 100%;
 }
 
 .butterfly {

@@ -58,8 +58,17 @@ button {
 	font-size: 16px; 
 } 
 
+a {
+	text-decoration: none
+}
+
 .wrap { 
 	display: flex; 
 	justify-content: center; 
 	align-items: center; 
+}
+
+ 
+embed {
+    width: 100%;
 }

@@ -1,46 +1,45 @@
-<!DOCTYPE html> 
-<html> 
+<!DOCTYPE html>
+<html>
 
-<head> 
-	<title>GeeksforGeeks Registration</title> 
-	<link rel="stylesheet" href="/css/login.css"> 
+<head>
+	<link rel="icon" href="..\img\games-title.png" type="image/x-icon">
+	<title>Games Sign up</title>
+	<link rel="stylesheet" href="/css/login.css">
 </head>
 
-<body> 
-	<div class="main"> 
-		<h1>Sign Up</h1> 
-		<h3>Enter your login credentials</h3> 
-		<form action=""> 
-			<label for="first"> 
-				Username: 
-			</label> 
-			<input type="text"
-				id="first"
-				name="first"
-				placeholder="Enter your Username" required> 
+<body>
+	<embed type="text/html" src="header.html">
+	<div class="main">
+		<h1>Sign Up</h1>
+		<h3>i'ts free and only takes a minute</h3>
+		<form action="">
+			<label for="first">
+				Username:
+			</label>
+			<input type="text" id="userName" name="userName" placeholder="Enter Username" required>
 
-			<label for="password"> 
-				Password: 
-			</label> 
-			<input type="password"
-				id="password"
-				name="password"
-				placeholder="Enter your Password" required> 
+			<label for="password">
+				Password (6 or more characters):
+			</label>
+			<input type="password" id="password" name="password" placeholder="Enter Password" required>
 
-			<div class="wrap"> 
-				<button type="submit"
-						onclick="solve()"> 
-					Submit 
-				</button> 
-			</div> 
-		</form> 
-		<p>Not registered? 
-			<a href="#"
-			style="text-decoration: none;"> 
-				Create an account 
-			</a> 
-		</p> 
-	</div> 
-</body> 
+			<label for="first">
+				Email:
+			</label>
+			<input type="text" id="email" name="email" placeholder="Enter your Email" required>
 
+			<div class="wrap">
+				<button type="submit" onclick="solve()">
+					Submit
+				</button>
+			</div>
+		</form>
+		<p>Already have an account?
+			<a href="./signin.html">
+				Sign in
+			</a>
+		</p>
+	</div>
+	<embed type="text/html" src="footer.html">
+</body>
 </html>
