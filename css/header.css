@@ -12,9 +12,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     background-color: #252424;
-    padding: 0.9% 0.9%; 
+    padding: 0.9% 1%; 
     font-family: 'Calibri Light', sans-serif;
-   
     font-size: 1.1em;
     font-weight: bold;
 }
@@ -35,21 +34,8 @@ nav {
   margin-right: 2%;
 }
 
-.top-nav li:not(:last-child)::after {
-    content: "|"; 
-    font-weight: bold;
-    margin-left: 10px; 
-    color: rgb(231, 181, 237); 
-}
-
 .top-nav a {
     text-decoration: none;
-    color: rgb(255, 255, 255);
-    padding: 10px;
-}
-
-.top-nav a:hover {
-    color: rgb(231, 181, 237);
 }
 
 button { 
@@ -68,6 +54,10 @@ button {
     font-size: var(--small-font-size);
     color: var(--text-color-light);
     margin-top: 3.5rem;
+ }
+
+#profile, #signOut {
+    display: none;
  }
 
 

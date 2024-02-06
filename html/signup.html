@@ -1,61 +1,62 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-	<link rel="icon" href="..\img\games-title.png" type="image/x-icon">
-	<title>Games Sign up</title>
-	<link rel="stylesheet" href="/css/login.css">
-</head>
-
-<body>
-	<embed type="text/html" src="header.html">
-	<div class="main">
-		<h1>Sign Up</h1>
-		<h3>i'ts free and only takes a minute</h3>
-		<form action="">
-			<label for="firstName">
-			  First Name:
-			</label>
-			<input type="text" id="firstName" name="firstName" placeholder="Enter First Name" required>
-		  
-			<label for="lastName">
-			  Last Name:
-			</label>
-			<input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" required>
-		  
-			<label for="userName">
-			  Username:
-			</label>
-			<input type="text" id="userName" name="userName" placeholder="Enter Username" required>
-		  
-			<label for="password">
-			  Password (6 or more characters):
-			</label>
-			<input type="password" id="password" name="password" placeholder="Enter Password" required>
-		  
-			<label for="email">
-			  Email:
-			</label>
-			<input type="text" id="email" name="email" placeholder="Enter your Email" required>
-		  
-			<label for="birthdate">
-			  Birthdate:
-			</label>
-			<input type="date" id="birthdate" name="birthdate" max="2021-12-31" required>
-		  
-			<div class="wrap">
-			  <button type="submit" onclick="solve()">
-				Submit
-			  </button>
-			</div>
-		  </form>
-		  
-		<p>Already have an account?
-			<a href="./signin.html">
-				Sign in
-			</a>
-		</p>
-	</div>
-	<embed type="text/html" src="footer.html">
-</body>
+<html lang="en">
+	<head>
+		<link rel="icon" href="..\img\games-title.png" type="image/x-icon">
+		<title>Games4U Sign up</title>
+		<link rel="stylesheet" href="/css/login.css">
+		<script src="/js/assets.js" defer></script>
+		<script src="/js/signup.js" defer></script>
+	</head>
+	
+	<body>
+		<embed type="text/html" src="header.html">
+		<div class="main">
+			<h1>Sign Up</h1>
+			<h3>i'ts free and only takes a minute</h3>
+			<form action="">
+				<label for="firstName">
+					First Name:
+				</label>
+				<input type="text" id="firstName" name="firstName" placeholder="Enter First Name" required>
+	
+				<label for="lastName">
+					Last Name:
+				</label>
+				<input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" required>
+	
+				<label for="userName">
+					Username:
+				</label>
+				<input type="text" id="userName" name="userName" placeholder="Enter Username" required>
+	
+				<label for="password">
+					Password (6 or more characters):
+				</label>
+				<input type="password" id="password" name="password" placeholder="Enter Password" required>
+	
+				<label for="email">
+					Email:
+				</label>
+				<input type="text" id="email" name="email" placeholder="Enter your Email" required>
+	
+				<label for="birthDate">
+					Birth date:
+				</label>
+				<input type="date" id="birthDate" name="birthDate" max="2021-12-31" required>
+	
+				<div class="wrap">
+					<button type="submit" id="signupSubmit" name="signupSubmit">
+						Submit
+					</button>
+				</div>
+			</form>
+	
+			<p>Already have an account?
+				<a href="./signin.html">
+					Sign in
+				</a>
+			</p>
+		</div>
+		<embed type="text/html" src="footer.html">
+	</body>
 </html>

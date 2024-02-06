@@ -4,7 +4,8 @@ const selectors = {
     moves: document.querySelector('.moves'),
     timer: document.querySelector('.timer'),
     start: document.querySelector('button'),
-    win: document.querySelector('.win')
+    win: document.querySelector('.win'),
+    levelButtons: document.querySelectorAll('.level-button')
 }
 
 const state = {
@@ -43,18 +44,16 @@ const pickRandom = (array, items) => {
     return randomPicks
 }
 
-const generateGame = () => {
-    const dimensions = selectors.board.getAttribute('data-dimension')
-
-    if (dimensions % 2 !== 0) {
+const generateGame = (dimension) => {
+    if (dimension % 2 !== 0) {
         throw new Error("The dimension of the board must be an even number.")
     }
 
     const emojis = ['🥔', '🍒', '🥑', '🌽', '🥕', '🍇', '🍉', '🍌', '🥭', '🍍']
-    const picks = pickRandom(emojis, (dimensions * dimensions) / 2) 
+    const picks = pickRandom(emojis, (dimension * dimension) / 2) 
     const items = shuffle([...picks, ...picks])
     const cards = `
-        <div class="board" style="grid-template-columns: repeat(${dimensions}, auto)">
+        <div class="board" style="grid-template-columns: repeat(${dimension}, auto)">
             ${items.map(item => `
                 <div class="card">
                     <div class="card-front"></div>
@@ -66,7 +65,8 @@ const generateGame = () => {
     
     const parser = new DOMParser().parseFromString(cards, 'text/html')
 
-    selectors.board.replaceWith(parser.querySelector('.board'))
+    selectors.boardContainer.innerHTML = ''
+    selectors.boardContainer.appendChild(parser.querySelector('.board'))
 }
 
 const startGame = () => {
@@ -132,6 +132,13 @@ const flipCard = card => {
 }
 
 const attachEventListeners = () => {
+    selectors.levelButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const dimension = parseInt(button.getAttribute('data-dimension'))
+            generateGame(dimension)
+        })
+    })
+
     document.addEventListener('click', event => {
         const eventTarget = event.target
         const eventParent = eventTarget.parentElement
@@ -144,5 +151,4 @@ const attachEventListeners = () => {
     })
 }
 
-generateGame()
 attachEventListeners()

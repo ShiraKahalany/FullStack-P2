@@ -1,24 +1,42 @@
 body { 
-	display: flex; 
-	align-items: center; 
-	justify-content: center; 
-	font-family: sans-serif; 
-	line-height: 1.5; 
-	min-height: 100vh; 
-	background: #f3f3f3; 
-	flex-direction: column; 
-	margin: 0; 
+    font-family: sans-serif;
 } 
 
-.main { 
+.main{
+    display:flex;
+}
+
+.UserDetails { 
 	background-color: #fff; 
 	border-radius: 15px; 
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
 	padding: 10px 20px; 
 	transition: transform 0.2s; 
-	width: 500px; 
+	width: 30%; 
+    margin-left: 5%;
 	text-align: center; 
+    display: flex;  
+	justify-content: center;  
+	line-height: 1.5; 
+	background: #f3f3f3; 
+    flex-direction: column; 
 } 
+
+.grades{
+    background-color: #fff; 
+	border-radius: 15px; 
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+	padding: 10px 20px; 
+	transition: transform 0.2s; 
+	width: 30%; 
+	text-align: center; 
+    display: flex;  
+	justify-content: center;  
+	line-height: 1.5; 
+	background: #f3f3f3; 
+    flex-direction: column; 
+    margin-right: 10%;
+}
 
 h1 { 
 	color: #76a1c7; 
@@ -32,17 +50,6 @@ label {
 	text-align: left; 
 	color: #555; 
 	font-weight: bold; 
-} 
-
-
-input { 
-	display: block; 
-	width: 100%; 
-	margin-bottom: 15px; 
-	padding: 10px; 
-	box-sizing: border-box; 
-	border: 1px solid #ddd; 
-	border-radius: 5px; 
 } 
 
 button { 
@@ -68,7 +75,6 @@ a {
 	align-items: center; 
 }
 
- 
 embed {
     width: 100%;
 }

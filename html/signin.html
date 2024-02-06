@@ -1,47 +1,48 @@
 <!DOCTYPE html> 
-<html> 
-
-<head> 
-	<link rel="icon" href="..\img\games-title.png" type="image/x-icon">
-	<title>Games Sign in</title> 
-	<link rel="stylesheet" href="/css/login.css"> 
-</head>
-
-<body> 
-	<embed type="text/html" src="header.html">
-	<div class="main"> 
-		<h1>Sign In</h1> 
-		<h3>Please sign in to continue.</h3> 
-		<form action=""> 
-			<label for="first"> 
-				Username: 
-			</label> 
-			<input type="text"
-				id="first"
-				name="first"
-				placeholder="Enter your Username" required> 
-
-			<label for="password"> 
-				Password: 
-			</label> 
-			<input type="password"
-				id="password"
-				name="password"
-				placeholder="Enter your Password" required> 
-
-			<div class="wrap"> 
-				<button type="submit"
-						onclick="solve()"> 
-					Submit 
-				</button> 
-			</div> 
-		</form> 
-		<p>Don't have an account? 
-			<a href="./signup.html"> 
-				Create new one
-			</a> 
-		</p> 
-	</div> 
-	<embed type="text/html" src="footer.html">
-</body> 
+<html lang="en">
+	<head> 
+		<link rel="icon" href="..\img\games-title.png" type="image/x-icon">
+		<title>Games4U Sign in</title> 
+		<link rel="stylesheet" href="/css/login.css"> 
+		<script src="/js/assets.js" defer></script>
+		<script src="/js/signin.js" defer></script>
+	</head>
+	
+	<body> 
+		<embed type="text/html" src="header.html">
+		<div class="main"> 
+			<h1>Sign In</h1> 
+			<h3>Please sign in to continue.</h3> 
+			<form action=""> 
+				<label for="userName"> 
+					Username: 
+				</label> 
+				<input type="text"
+					id="userName"
+					name="userName"
+					placeholder="Enter your Username" required> 
+	
+				<label for="password"> 
+					Password: 
+				</label> 
+				<input type="password"
+					id="password"
+					name="password"
+					placeholder="Enter your Password" required> 
+	
+				<div class="wrap"> 
+					<button type="submit" id="signinSubmit" name="signinSubmit"
+							onclick="submit()"> 
+						Submit 
+					</button> 
+				</div> 
+			</form> 
+			<p>Don't have an account? 
+				<a href="./signup.html"> 
+					Create new one
+				</a> 
+			</p> 
+		</div> 
+		<embed type="text/html" src="footer.html">
+	</body> 
 </html>
