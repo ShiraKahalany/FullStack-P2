@@ -4,6 +4,9 @@ body {
 
 .main{
     display:flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
 }
 
 .UserDetails { 
@@ -12,7 +15,7 @@ body {
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
 	padding: 10px 20px; 
 	transition: transform 0.2s; 
-	width: 30%; 
+	width: 35%; 
     margin-left: 5%;
 	text-align: center; 
     display: flex;  
@@ -28,7 +31,7 @@ body {
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
 	padding: 10px 20px; 
 	transition: transform 0.2s; 
-	width: 30%; 
+	width: 35%; 
 	text-align: center; 
     display: flex;  
 	justify-content: center;  

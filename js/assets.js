@@ -9,5 +9,6 @@ function handleLogout() {
     // Clear session storage and redirect to login page
     localStorage.removeItem('currentUser');
     localStorage.setItem('isLoggedIn', 'false');
+    localStorage.setItem('update', 'false');
     window.parent.location.href = '../index.html';
 }

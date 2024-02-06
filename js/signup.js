@@ -11,15 +11,31 @@ submitButton.addEventListener('click', function(event) {
     addUser();
 });
 
-// document.getElementById('firstName').value = 'first';
-// document.getElementById('lastName').value = 'last';
-// document.getElementById('userName').value = 'username';
-// document.getElementById('password').value = 'password123';
-// document.getElementById('email').value = 'email@';
+document.addEventListener('DOMContentLoaded', function() {
+    if(localStorage.getItem('update') && localStorage.getItem('update') === 'true'){
+        document.querySelector('h1').innerHTML = 'Update Details';
+        document.querySelector('h3').style.display = 'none';
+        document.querySelector('button').innerHTML = 'Update';
+        document.querySelector('p').style.display = 'none';
+        document.querySelector('a').style.display = 'none';
+
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        setUserDetails(currentUser.firstName,
+            currentUser.lastName, currentUser.userName, 
+            currentUser.password, currentUser.email);
+    }   
+});
+
+function setUserDetails(first, last, name, pass, email){
+    document.getElementById("firstName").value = first;
+    document.getElementById("lastName").value = last;
+    document.getElementById("userName").value = name;
+    document.getElementById("password").value = pass;
+    document.getElementById("email").value = email;
+}
 
 function createUserObject() {
     return {
-      id: localStorage.userID,
       firstName: firstNameInput.value,
       lastName: lastNameInput.value,
       userName: userNameInput.value,
