@@ -79,10 +79,6 @@ embed {
     width: 100%;
 }
 
-.detailsProfile {
-    display: flex; /* Use flexbox to align items */
-}
-
-.detailsProfile label {
-    margin-right: 10px; /* Optional: Add some space between the labels */
+.UserDetails div{
+    display: flex;
 }
