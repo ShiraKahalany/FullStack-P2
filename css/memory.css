@@ -86,13 +86,13 @@ input {
 	display: none;
 }
 
-label {
+label,button {
 	flex: 1;
 	display: inline-block;
 	cursor: pointer;
 	text-align: center;
 	line-height: 50px;
-	margin: 0;
+	margin-bottom: 5%;
 	padding: 0;
 	background:  #e5e56e;
 	color: #ffffff;
