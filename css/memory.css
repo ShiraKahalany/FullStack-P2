@@ -20,7 +20,7 @@ h3 {
 	font-family: 'Chicle', cursive;
 	font-size: 5em;
 	text-align: center;
-	color: #61045f;
+	color: #e5e56e;
 }
 
 h3 {
@@ -64,7 +64,7 @@ h3 {
 }
 
 .fa-star {
-	color: purple;
+	color: #e8944f;
 }
 
 #reset {
@@ -94,7 +94,7 @@ label {
 	line-height: 50px;
 	margin: 0;
 	padding: 0;
-	background:  #61045f;
+	background:  #e5e56e;
 	color: #ffffff;
 	box-shadow: inset 0 -7px 9px -7px rgba(0,0,0,0.7);;
 }
@@ -119,7 +119,7 @@ label:nth-of-type(2) {
 	/* gradiend credit uiGradients */
 	background: #aa076b;  
 	background: -webkit-linear-gradient(to bottom, #61045f, #aa076b); 
-	background: linear-gradient(to bottom, #61045f, #aa076b); 
+	background: linear-gradient(to bottom, #e5e56e, #aa076b); 
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;

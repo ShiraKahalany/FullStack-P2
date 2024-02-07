@@ -1,4 +1,4 @@
-const icons = ['ambulance', 'anchor', 'balance-scale', 'basketball-ball', 'bath', 'bed', 'beer', 'bicycle', 'binoculars', 'bomb', 'bug', 'car', 'chess-rook', 'chess-queen', 'cloud', 'fighter-jet', 'fire', 'gamepad', 'home', 'sun', 'volleyball-ball', 'chess-knight'];
+const icons = ['heart', 'anchor', 'diamond', 'music', 'camera', 'rocket', 'globe', 'leaf', 'tree', 'cloud', 'moon', 'sun', 'leaf'];
 const board = document.querySelector('.game-board');
 const reset = document.getElementById('reset');
 const replay = document.getElementById('replay');
