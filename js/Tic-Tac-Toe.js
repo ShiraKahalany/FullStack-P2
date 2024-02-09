@@ -1,121 +1,94 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const selectBox = document.querySelector(".select-box");
-    const selectBtnX = selectBox.querySelector(".options .playerX");
-    const selectBtnO = selectBox.querySelector(".options .playerO");
-    const playBoard = document.querySelector(".play-board");
-    const players = document.querySelector(".players");
-    const allBox = document.querySelectorAll("section span");
-    const resultBox = document.querySelector(".result-box");
-    const wonText = resultBox.querySelector(".won-text");
-    const replayBtn = resultBox.querySelector("button");
+const cells =document.querySelectorAll(".cell");
+const statusText =document.querySelector("#statusText");
+const restartBtn =document.querySelector("#restartBtn");
+const winConditions =[
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [2,4,6]
+];
+let options =["", "", "", "", "", "", "", "", ""];
+let currentPlayer = "X";
+let running = false;
 
-    // Hide the select box and show the playboard initially
-    selectBox.classList.add("hide");
-    playBoard.classList.add("show");
 
-    // Set the player selection event listeners
-    selectBtnX.addEventListener("click", () => {
-        players.classList.remove("active");
-        players.classList.remove("player");
-    });
+initializeGame();
 
-    selectBtnO.addEventListener("click", () => {
-        players.classList.add("active");
-        players.classList.add("player");
-    });
 
-    // Set the onclick event for each box
-    allBox.forEach(box => {
-        box.addEventListener("click", () => clickedBox(box));
-    });
+function initializeGame(){
+    cells.forEach(cell => cell.addEventListener("click", cellClicked)); // Remove parentheses after cellClicked
+    restartBtn.addEventListener("click", restartGame);
+    statusText.textContent = `${currentPlayer}'s turn`;
+    running = true;
+}
 
-    let playerXIcon = "fas fa-times";
-    let playerOIcon = "far fa-circle";
-    let playerSign = "X";
-    let runBot = true;
 
-    function clickedBox(element){
-        if(players.classList.contains("player")){
-            playerSign = "O";
-            element.innerHTML = `<i class="${playerOIcon}"></i>`;
-            players.classList.remove("active");
-            element.setAttribute("id", playerSign);
-        } else {
-            element.innerHTML = `<i class="${playerXIcon}"></i>`;
-            element.setAttribute("id", playerSign);
-            players.classList.add("active");
-        }
-        selectWinner();
-        element.style.pointerEvents = "none";
-        playBoard.style.pointerEvents = "none";
-        let randomTimeDelay = ((Math.random() * 1000) + 200).toFixed();
-        setTimeout(() => {
-            bot(runBot);
-        }, randomTimeDelay);
+function cellClicked(){
+    const cellIndex = this.getAttribute("cellIndex"); //get the clicked cellIndex
+
+    if(options[cellIndex] != "" || !running)
+    {
+        return;
     }
 
-    function bot(){
-        let array = [];
-        if(runBot){
-            playerSign = "O";
-            for (let i = 0; i < allBox.length; i++) {
-                if(allBox[i].childElementCount == 0){
-                    array.push(i);
-                }
+    updateCell(this, cellIndex);
+    checkWinner();
+}
+
+function updateCell(cell, index){
+    options[index] = currentPlayer;
+    cell.textContent = currentPlayer;
+}
+
+function changePlayer(){
+    currentPlayer = (currentPlayer =="X") ? "O" : "X";
+    statusText.textContent = `${currentPlayer}'s turn`;
+}
+
+function checkWinner(){
+    let roundWon = false;
+
+    for (let i = 0; i < winConditions.length; i++)
+    {
+        const condition = winConditions[i];
+        const cellA = options[condition[0]];
+        const cellB = options[condition[1]];
+        const cellC = options[condition[2]];
+
+        if(cellA == "" || cellB == "" || cellC == ""){
+             continue;
             }
-            let randomBox = array[Math.floor(Math.random() * array.length)];
-            if(array.length > 0){
-                if(players.classList.contains("player")){ 
-                    playerSign = "X";
-                    allBox[randomBox].innerHTML = `<i class="${playerXIcon}"></i>`;
-                    allBox[randomBox].setAttribute("id", playerSign);
-                    players.classList.add("active");
-                } else {
-                    allBox[randomBox].innerHTML = `<i class="${playerOIcon}"></i>`;
-                    players.classList.remove("active");
-                    allBox[randomBox].setAttribute("id", playerSign);
-                }
-                selectWinner();
-            }
-            allBox[randomBox].style.pointerEvents = "none";
-            playBoard.style.pointerEvents = "auto";
-            playerSign = "X";
+
+        if(cellA == cellB && cellB == cellC){
+            roundWon = true;
+            break;
         }
     }
 
-    function getIdVal(classname){
-        return document.querySelector(".box" + classname).id;
+    if(roundWon){
+        statusText.textContent = `${currentPlayer} wins!`;
+        running = false;
+    }
+    else if(!options.includes("")){
+        statusText.textContent = 'Draw!';
+        running = false;
+    }
+    else{
+        changePlayer();
     }
 
-    function checkIdSign(val1, val2, val3, sign){
-        if(getIdVal(val1) == sign && getIdVal(val2) == sign && getIdVal(val3) == sign){
-            return true;
-        }
-    }
+}
 
-    function selectWinner(){
-        if(checkIdSign(1,2,3,playerSign) || checkIdSign(4,5,6, playerSign) || checkIdSign(7,8,9, playerSign) || checkIdSign(1,4,7, playerSign) || checkIdSign(2,5,8, playerSign) || checkIdSign(3,6,9, playerSign) || checkIdSign(1,5,9, playerSign) || checkIdSign(3,5,7, playerSign)){
-            runBot = false;
-            bot(runBot);
-            setTimeout(() => {
-                resultBox.classList.add("show");
-                playBoard.classList.remove("show");
-            }, 700);
-            wonText.innerHTML = `Player <p>${playerSign}</p> won the game!`;
-        } else {
-            if(getIdVal(1) != "" && getIdVal(2) != "" && getIdVal(3) != "" && getIdVal(4) != "" && getIdVal(5) != "" && getIdVal(6) != "" && getIdVal(7) != "" && getIdVal(8) != "" && getIdVal(9) != ""){
-                runBot = false;
-                bot(runBot);
-                setTimeout(() => {
-                    resultBox.classList.add("show");
-                    playBoard.classList.remove("show");
-                }, 700);
-                wonText.textContent = "Match has been drawn!";
-            }
-        }
-    }
+function restartGame(){
+    currentPlayer = "X";
+    options =["", "", "", "", "", "", "", "", ""];
+    statusText.textContent = `${currentPlayer}'s turn`;
+    cells.forEach(cell => cell.textContent="");
+    running = true;
+}
 
-    replayBtn.addEventListener("click", () => {
-        window.location.reload();
-    });
-});
+
