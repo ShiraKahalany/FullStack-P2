@@ -8,6 +8,8 @@ body {
 	background: #f3f3f3; 
 	flex-direction: column; 
 	margin: 0; 
+	background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgb(250, 250, 250), rgb(95, 145, 183));
+
 } 
 
 .main { 
@@ -45,7 +47,7 @@ input {
 	border-radius: 5px; 
 } 
 
-button { 
+/* button { 
 	padding: 15px; 
 	border-radius: 10px; 
 	margin-top: 15px; 
@@ -56,7 +58,7 @@ button {
 	background-color: rgb(95, 145, 183); 
 	width: 100%; 
 	font-size: 16px; 
-} 
+}  */
 
 a {
 	text-decoration: none

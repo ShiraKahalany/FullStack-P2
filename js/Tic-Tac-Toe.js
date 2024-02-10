@@ -37,6 +37,10 @@ function cellClicked(){
 
     updateCell(this, cellIndex);
     checkWinner();
+
+    if (running) {
+        setTimeout(computerMove, 500); 
+    }
 }
 
 function updateCell(cell, index){
@@ -92,3 +96,18 @@ function restartGame(){
 }
 
 
+function computerMove() {
+    const availableCells = [];
+    options.forEach((option, index) => {
+        if (option === "") {
+            availableCells.push(index);
+        }
+    });
+
+    const randomIndex = Math.floor(Math.random() * availableCells.length);
+    const cellIndex = availableCells[randomIndex];
+
+    const cell = cells[cellIndex];
+    updateCell(cell, cellIndex);
+    checkWinner();
+}
