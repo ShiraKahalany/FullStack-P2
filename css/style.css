@@ -5,7 +5,7 @@
 }
 
 body{
-    font-size: 22px;
+    font-size: 1em;
     margin:0;
 }
 
@@ -17,7 +17,7 @@ body{
 
 p {
     font-size: 1em;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: 'Aclonica';
     line-height: 1.5;
 }
 
@@ -32,10 +32,6 @@ h1, h2 {
  
 embed {
     width: 100%;
-}
-
-.butterfly {
-    max-height: 3em;
 }
 
 
@@ -65,9 +61,6 @@ embed {
     border: 0px;
 }
 
-.p-about-us{
-    margin: 3% 0%;
-}
 
 /**** Product cards ****/
 .card:hover {
@@ -98,27 +91,30 @@ embed {
 }
 
 /*** Button ***/
-.button-send {
+button {
     border-radius: 15px;
-    border: none;
+    border: black;
     box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
     color: #3c4043;
     cursor: pointer;
-    font-size: 1em;
-    height: 2.2em; 
-    width: 12em;
+    font-size: 0.8em;
+    height: 2.4em; 
+    width: 6.6em;
     margin: 1em 0em;
+    /* font-weight: bold; */
+    text-shadow: 0 0 0.1em black;
+    text-align: center;
   }
   
-  .button-send:hover {
-    background: #f6fdf6;
-    color: rgb(95, 145, 183);
-  }
+button:hover {
+    background: rgb(185, 207, 224);
+    color: rgb(8, 8, 8);
+}
 
   
-  .button-send:focus {
-    border: 2px solid #4285f4;
-  }
+button:focus {
+    border: 2px solid #2f2f31;
+}
 
 
 
