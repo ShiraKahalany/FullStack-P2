@@ -12,3 +12,7 @@ function handleLogout() {
     localStorage.setItem('update', 'false');
     window.parent.location.href = '../index.html';
 }
+
+function showAlert() {
+    alert("This feature is still under development.");
+}
