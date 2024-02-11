@@ -33,7 +33,7 @@ switch (difficulty) {
     cardCount = 4;
 }
 
-fetch("/img/cards.json")
+fetch("/json/cards.json")
   .then((res) => res.json())
   .then((data) => {
     cards = data.slice(0, cardCount);
@@ -149,5 +149,7 @@ function stopwatch() {
 }
 
 function endGame() {
-	clearInterval(setTimer);
+  clearInterval(setTimer);
+
+  
 }
