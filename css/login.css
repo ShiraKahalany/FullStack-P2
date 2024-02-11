@@ -8,8 +8,6 @@ body {
 	background: #f3f3f3; 
 	flex-direction: column; 
 	margin: 0; 
-	background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgb(250, 250, 250), rgb(95, 145, 183));
-
 } 
 
 .main { 
@@ -47,19 +45,6 @@ input {
 	border-radius: 5px; 
 } 
 
-/* button { 
-	padding: 15px; 
-	border-radius: 10px; 
-	margin-top: 15px; 
-	margin-bottom: 15px; 
-	border: none; 
-	color: white; 
-	cursor: pointer; 
-	background-color: rgb(95, 145, 183); 
-	width: 100%; 
-	font-size: 16px; 
-}  */
-
 a {
 	text-decoration: none
 }
@@ -70,15 +55,10 @@ a {
 	align-items: center; 
 }
 
- 
-embed {
-    width: 100%;
-}
-
 .detailsProfile {
-    display: flex; /* Use flexbox to align items */
+    display: flex; 
 }
 
 .detailsProfile label {
-    margin-right: 10px; /* Optional: Add some space between the labels */
+    margin-right: 10px; 
 }

@@ -7,12 +7,12 @@
 body{
     font-size: 1em;
     margin:0;
+    background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgb(250, 250, 250), rgb(95, 145, 183));
 }
 
 .container {
     min-height: 100vh;
     text-align: center;
-    background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgb(250, 250, 250), rgb(95, 145, 183));
 }
 
 p {
@@ -20,7 +20,6 @@ p {
     font-family: 'Aclonica';
     line-height: 1.5;
 }
-
 
 h1, h2 {
     font-weight:bold;
@@ -34,60 +33,8 @@ embed {
     width: 100%;
 }
 
-
-/**** Image header and text ****/
-
-.header-image {
-    height: 25em;
-    background-image: url("/img/background.jpeg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    z-index: 1;
-  }
-
-.header-text {
-    text-align: center;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: rgb(255, 252, 252);
-    font-size: 8em;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0) 80%);
-    z-index: 2;
-    padding: 1% 5%;
-    border: 0px;
-}
-
-
-/**** Product cards ****/
-.card:hover {
-    transform: scale(1.05);
-}
-
-
-.img-thumbnail {
-    border-radius: 25px;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border: currentColor;
-}
-
-.card {
-    border-radius: 25px;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border: currentColor;
-    width: 22%;
-    margin: 17px;
-}
-
-
-.row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
+.header{
+    height: 90px;
 }
 
 /*** Button ***/
@@ -95,14 +42,13 @@ button {
     border-radius: 15px;
     border: black;
     box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
-    color: #3c4043;
+    color: black;
     cursor: pointer;
     font-size: 0.8em;
     height: 2.4em; 
     width: 6.6em;
     margin: 1em 0em;
     /* font-weight: bold; */
-    text-shadow: 0 0 0.1em black;
     text-align: center;
   }
   
