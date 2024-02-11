@@ -111,3 +111,4 @@ function computerMove() {
     updateCell(cell, cellIndex);
     checkWinner();
 }
+

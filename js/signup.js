@@ -41,13 +41,11 @@ function createUserObject() {
       userName: userNameInput.value,
       password: passwordInput.value,
       email: emailInput.value,
-      birthDate: birthDateInput.value, 
-      score: 0
+      birthDate: birthDateInput.value
     };
 }
 
 function addUser(){
-
     let users = JSON.parse(localStorage.getItem('users')) || [];
     let user = createUserObject();
 

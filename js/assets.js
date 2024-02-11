@@ -18,6 +18,8 @@ function showAlert() {
 }
 
 function addScore(fileName, userName, score) {
+    let scores = JSON.parse(localStorage.getItem(fileName)) || [];
+
     fetch(`${fileName}.json`)
     .then((response) => response.json())
     .then((data) => {
@@ -41,5 +43,8 @@ function addScore(fileName, userName, score) {
         }
 
         const updatedJSON = JSON.stringify(data);
+        
+         // Update localStorage
+         localStorage.setItem(fileName, updatedJSON);
     });
 }

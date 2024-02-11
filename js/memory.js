@@ -7,6 +7,7 @@ let firstCard, secondCard;
 let lockBoard = false;
 let moves = 0;
 let sec = 0;
+let score = 0;
 timer.innerText = "0";
 let setTimer;
 
@@ -14,6 +15,7 @@ document.querySelector(".moves").textContent = moves;
 document.querySelector("button").addEventListener("click", restart);
 
 const difficulty = localStorage.getItem("difficulty");
+const currentUser = localStorage.getItem("currentUser");
 
 switch (difficulty) {
   case "easy":
@@ -150,6 +152,5 @@ function stopwatch() {
 
 function endGame() {
   clearInterval(setTimer);
-
-  
+  addScore("memory", currentUser.userName, score);
 }
