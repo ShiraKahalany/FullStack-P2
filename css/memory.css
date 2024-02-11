@@ -19,7 +19,7 @@
  	height: 90%;
  	width: 100%;
  	border-radius: 10px;
- 	background-color: black;
+ 	background-color: rgb(219, 217, 217);
  	position: relative;
  	transform-style: preserve-3d;
  	transition: all 0.5s ease-in-out;

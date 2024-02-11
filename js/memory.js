@@ -2,51 +2,53 @@ const gridContainer = document.querySelector(".grid-container");
 const timer = document.getElementById("timer");
 let cards = [];
 let cardCount;
+let flipCarsCount = 0;
 let firstCard, secondCard;
 let lockBoard = false;
-let score = 0;
+let moves = 0;
 let sec = 0;
-timer.innerText = '0';
+timer.innerText = "0";
+let setTimer;
 
-document.querySelector(".score").textContent = score;
-document.querySelector("button").addEventListener('click', restart);
+document.querySelector(".moves").textContent = moves;
+document.querySelector("button").addEventListener("click", restart);
 
-const difficulty = localStorage.getItem('difficulty');
+const difficulty = localStorage.getItem("difficulty");
 
 switch (difficulty) {
-	case "easy":
-		gridContainer.classList.add("easy");
-		cardCount = 3;
-		break;
-	case "medium":
-		gridContainer.classList.add("medium");
-		cardCount = 4;
-		break;
-	case "hard":
-		gridContainer.classList.add("hard");
-		cardCount = 8;
-		break;
-	default:
-		gridContainer.classList.add("medium");
-		cardCount = 4;
+  case "easy":
+    gridContainer.classList.add("easy");
+    cardCount = 3;
+    break;
+  case "medium":
+    gridContainer.classList.add("medium");
+    cardCount = 4;
+    break;
+  case "hard":
+    gridContainer.classList.add("hard");
+    cardCount = 8;
+    break;
+  default:
+    gridContainer.classList.add("medium");
+    cardCount = 4;
 }
 
 fetch("/img/cards.json")
   .then((res) => res.json())
   .then((data) => {
-	cards = data.slice(0, cardCount);
+    cards = data.slice(0, cardCount);
     cards = [...cards, ...cards];
-	setTimer();
+    setTime();
     shuffleCards();
     generateCards();
   });
 
-function setTimer(){
-	gridContainer.addEventListener('click', function clickOnce(){
-		clearInterval(setTimer);
-		setTimer = setInterval(stopwatch, 1000);
-		gridContainer.removeEventListener('click', clickOnce)
-	});
+function setTime() {
+  gridContainer.addEventListener("click", function clickOnce() {
+    clearInterval(setTimer);
+    setTimer = setInterval(stopwatch, 1000);
+    gridContainer.removeEventListener("click", clickOnce);
+  });
 }
 
 function shuffleCards() {
@@ -79,62 +81,73 @@ function generateCards() {
 }
 
 function flipCard() {
-	if (lockBoard) return;
-	if (this === firstCard) return;
-  
-	this.classList.add("flipped");
-  
-	if (!firstCard) {
-	  firstCard = this;
-	  return;
-	}
-  
-	secondCard = this;
-	score++;
-	document.querySelector(".score").textContent = score;
-	lockBoard = true;
-  
-	checkForMatch();
+  if (lockBoard) return;
+  if (this === firstCard) return;
+
+  this.classList.add("flipped");
+
+  if (!firstCard) {
+    firstCard = this;
+    return;
   }
-  
-  function checkForMatch() {
-	let isMatch = firstCard.dataset.name === secondCard.dataset.name;
-  
-	isMatch ? disableCards() : unflipCards();
+
+  secondCard = this;
+  moves++;
+  document.querySelector(".moves").textContent = moves;
+  lockBoard = true;
+
+  checkForMatch();
+}
+
+function checkForMatch() {
+  let isMatch = firstCard.dataset.name === secondCard.dataset.name;
+  if (isMatch) {
+    disableCards();
+    flipCarsCount++;
+    if (flipCarsCount === cardCount) {
+      endGame();
+    }
+  } else {
+    unflipCards();
   }
-  
-  function disableCards() {
-	firstCard.removeEventListener("click", flipCard);
-	secondCard.removeEventListener("click", flipCard);
-  
-	resetBoard();
+}
+
+function disableCards() {
+  firstCard.removeEventListener("click", flipCard);
+  secondCard.removeEventListener("click", flipCard);
+
+  resetBoard();
+}
+
+function unflipCards() {
+  setTimeout(() => {
+    firstCard.classList.remove("flipped");
+    secondCard.classList.remove("flipped");
+    resetBoard();
+  }, 1000);
+}
+
+function resetBoard() {
+  firstCard = null;
+  secondCard = null;
+  lockBoard = false;
+}
+
+function restart() {
+  window.location.href = "/html/difficulty.html";
+}
+
+function stopwatch() {
+  sec += 1;
+  if (sec < 60) {
+    timer.innerText = sec;
+  } else if (sec < 3600) {
+    let minutes = Math.floor(sec / 60);
+    let seconds = sec % 60;
+    timer.innerText = minutes + ":" + seconds;
   }
-  
-  function unflipCards() {
-	setTimeout(() => {
-	  firstCard.classList.remove("flipped");
-	  secondCard.classList.remove("flipped");
-	  resetBoard();
-	}, 1000);
-  }
-  
-  function resetBoard() {
-	firstCard = null;
-	secondCard = null;
-	lockBoard = false;
-  }
-  
-  function restart() {
-	window.location.href = '/html/difficulty.html';
-  }
-  
-  function stopwatch(){
-	  sec+=1;
-	  if (sec<60) {
-		  timer.innerText = sec;
-	  } else if (sec<3600) {
-		  let minutes = Math.floor(sec/60);
-		  let seconds = sec % 60;
-		  timer.innerText = minutes+":"+seconds;
-	  }
-  }
+}
+
+function endGame() {
+	clearInterval(setTimer);
+}
