@@ -18,7 +18,7 @@ function showAlert() {
 }
 
 function addScore(fileName, userName, score) {
-    let scores = JSON.parse(localStorage.getItem(fileName)) || [];
+    // let scores = JSON.parse(localStorage.getItem(fileName)) || [];
 
     fetch(`/json/${fileName}.json`)
     .then((response) => response.json())

@@ -2,69 +2,94 @@
 <html>
 
 <head>
-	<link rel="icon" href="..\img\games-title.png" type="image/x-icon">
-	<title>Games4U profile</title>
-	<link rel="stylesheet" href="/css/profile.css">
-	<link rel="stylesheet" href="/CSS/style.css">
-	<script src="/js/signup.js" defer></script>
-	<script src="/js/profile.js" defer></script>
+    <link rel="icon" href="..\img\games-title.png" type="image/x-icon">
+    <title>Games4U profile</title>
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <script src="/js/signup.js" defer></script>
+    <script src="/js/profile.js" defer></script>
 </head>
 
 <body>
-	<embed class="header" type="text/html" src="header.html">
-	<div role="main">
-		<section class="UserDetails">
-			<h1>My profile</h1>
+    <embed class="header" type="text/html" src="header.html">
+    <div role="main">
+        <section class="UserDetails">
+            <h1>My profile</h1>
 
-			<section>
-				<label for="userName">
-					Username:
-				</label>
-				<label id="userName"></label>
-			</section>
+            <section>
+                <label for="userName">
+                    Username:
+                </label>
+                <label id="userName"></label>
+            </section>
 
-			<section>
-				<label for="firstName">
-					First name:
-				</label>
-				<label id="firstName"></label>
-			</section>
+            <section>
+                <label for="firstName">
+                    First name:
+                </label>
+                <label id="firstName"></label>
+            </section>
 
-			<section>
-				<label for="lastName">
-					Last name:
-				</label>
-				<label id="lastName"></label>
-			</section>
+            <section>
+                <label for="lastName">
+                    Last name:
+                </label>
+                <label id="lastName"></label>
+            </section>
 
-			<section>
-				<label for="email">
-					Email:
-				</label>
-				<label id="email"></label>
-			</section>
+            <section>
+                <label for="email">
+                    Email:
+                </label>
+                <label id="email"></label>
+            </section>
 
-			<section>
-				<label for="birthDate">
-					Birth date:
-				</label>
-				<label id="birthDate"></label>
-			</section>
+            <section>
+                <label for="birthDate">
+                    Birth date:
+                </label>
+                <label id="birthDate"></label>
+            </section>
 
-			<section class="wrap">
-				<button id="updateDetails">
-					Update
-				</button>
-			</section>
-		</section>
-		<section class="grades">
-			<h1>My Grades</h1>
-			<label for="birthDate">
-				You haven't played yet, you have no scores.
-			</label>
-		</section>
-		<embed type="text/html" src="footer.html">
-	</div>
+            <section class="wrap">
+                <button id="updateDetails">
+                    Update
+                </button>
+            </section>
+        </section>
+        <section class="grades">
+            <h1>Grades</h1>
+            <div id="memoryTable">
+                <h4>Memory Game Scores</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="memoryScores">
+                        <!-- Data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="ticTacToeTable">
+                <h4>Tic Tac Toe Game Scores</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ticTacToeScores">
+                        <!-- Data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <embed type="text/html" src="footer.html">
+    </div>
 </body>
 
 </html>
