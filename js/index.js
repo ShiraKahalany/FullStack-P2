@@ -8,7 +8,7 @@ card1.addEventListener('click', function(event) {
 
 card2.addEventListener('click', function(event) {
     event.preventDefault(); // Prevent the default form submission
-    isLogged("/html/memory.html"); // Pass the event parameter to the submit function
+    isLogged("/html/difficulty.html"); // Pass the event parameter to the submit function
 });
 
 function isLogged(name){
