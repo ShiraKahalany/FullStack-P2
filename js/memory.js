@@ -28,10 +28,8 @@ document.querySelector(".moves").textContent = moves;
 // Event listener for restart button
 document.querySelector("button").addEventListener("click", restart);
 
-// Retrieve difficulty level and current user
 const difficulty = localStorage.getItem("difficulty");
 const currentUser = getUserFromCookie();
-const canvas = document.getElementById("my-canvas");
 const popup = document.querySelector('.popup');
 const displayScore = document.querySelector('#displayScore');
 
@@ -211,5 +209,7 @@ function endGame() {
   jsConfetti.addConfetti().then(() => jsConfetti.addConfetti());
 }
 
-
+document.querySelector(".close").addEventListener("click", function close(){
+	popup.classList.remove("active");
+});
 
