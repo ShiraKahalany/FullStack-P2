@@ -15,7 +15,7 @@ if (isLoggedIn()) {
 
 // Function to check if user is logged in
 function isLoggedIn() {
-  return localStorage.getItem("isLoggedIn") === "true";
+  return document.cookie !== "" ;
 }
 
 const signOut = document.getElementById("signOut");

@@ -11,6 +11,7 @@ submitButton.addEventListener('click', function(event) {
     addUser();
 });
 
+// in case the user ant to update his details
 document.addEventListener('DOMContentLoaded', function() {
     if(localStorage.getItem('update') && localStorage.getItem('update') === 'true'){
         document.querySelector('h1').innerHTML = 'Update Details';
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('p').style.display = 'none';
         document.querySelector('a').style.display = 'none';
 
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let currentUser = getUserFromCookie();
         setUserDetails(currentUser.firstName,
             currentUser.lastName, currentUser.userName, 
             currentUser.password, currentUser.email);

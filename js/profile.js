@@ -1,4 +1,4 @@
-var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+var currentUser = getUserFromCookie();
 
 document.getElementById('userName').innerHTML = currentUser.userName;
 document.getElementById('firstName').innerHTML = currentUser.firstName;
@@ -26,46 +26,7 @@ function update() {
 }
 
 
-
-
-
-// fetch("/json/memory.json")
-//     .then(response => response.json())
-//     .then(memoryScores => {
-//         const memoryTable = document.getElementById('memoryScores');
-//         if (memoryScores.length > 0) {
-//             memoryScores.forEach(score => {
-//                 const row = document.createElement('tr');
-//                 row.innerHTML = `<td>${score.userName}</td><td>${score.score}</td>`;
-//                 memoryTable.appendChild(row);
-//             });
-//         } else {
-//             memoryTable.innerHTML = '<tr><td colspan="2">No scores available</td></tr>';
-//         }
-//     })
-//     .catch(error => console.error('Error loading memory game scores:', error));
-
-
-// fetch("/json/Tic-Tac-Toe.json")
-//     .then(response => response.json())
-//     .then(ticTacToeScores => {
-//         const ticTacToeTable = document.getElementById('ticTacToeScores');
-//         if (ticTacToeScores.length > 0) {
-//             ticTacToeScores.forEach(score => {
-//                 const row = document.createElement('tr');
-//                 row.innerHTML = `<td>${score.userName}</td><td>${score.score}</td>`;
-//                 ticTacToeTable.appendChild(row);
-//             });
-//         } else {
-//             ticTacToeTable.innerHTML = '<tr><td colspan="2">No scores available</td></tr>';
-//         }
-//     })
-//     .catch(error => console.error('Error loading Tic Tac Toe game scores:', error));
-
-
-
-
-    // Load memory game scores
+// Load memory game scores
 fetch("/json/memory.json")
 .then(response => response.json())
 .then(memoryScores => {
