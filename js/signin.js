@@ -7,7 +7,7 @@ submitBu.addEventListener('click', function(event) {
     submit();
 });
 
-function submit() {
+function submit(event) {
     let users = JSON.parse(localStorage.getItem('users')) || [];
     var user = users.find(user => user.userName === userName.value);
     
@@ -22,6 +22,7 @@ function submit() {
         alert('This username does not exist.');
     }
 }
+
 
 
 

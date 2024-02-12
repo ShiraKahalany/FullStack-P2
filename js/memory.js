@@ -1,15 +1,22 @@
 const gridContainer = document.querySelector(".grid-container");
 const timer = document.getElementById("timer");
-let cards = [];
-let cardCount;
-let flipCarsCount = 0;
-let firstCard, secondCard;
-let lockBoard = false;
-let moves = 0;
-let sec = 0;
-let score = 0;
+
+const TIME_WEIGHT = 100; // Points per second
+const MOVES_WEIGHT = 10; // Points per move
+
+let cards = [],
+cardCount,
+flipCarsCount = 0, 
+firstCard, secondCard, 
+lockBoard = false,
+moves = 0,
+sec = 0,
+score = 0,
+setTimer,
+difficultyMultiplier = 1.0; // for the score
+
 timer.innerText = "0";
-let setTimer;
+
 
 document.querySelector(".moves").textContent = moves;
 document.querySelector("button").addEventListener("click", restart);
@@ -21,14 +28,17 @@ switch (difficulty) {
   case "easy":
     gridContainer.classList.add("easy");
     cardCount = 3;
+	difficultyMultiplier = 1.0;
     break;
   case "medium":
     gridContainer.classList.add("medium");
     cardCount = 4;
+	difficultyMultiplier = 1.5;
     break;
   case "hard":
     gridContainer.classList.add("hard");
     cardCount = 8;
+	difficultyMultiplier = 2.0;
     break;
   default:
     gridContainer.classList.add("medium");
@@ -87,6 +97,9 @@ function flipCard() {
   if (this === firstCard) return;
 
   this.classList.add("flipped");
+
+  var audio = new Audio('/img/76271.mp3'); // Provide the path to your sound file
+  audio.play();
 
   if (!firstCard) {
     firstCard = this;
@@ -150,8 +163,15 @@ function stopwatch() {
   }
 }
 
-function calcMemoryScore(){
+function calcMemoryScore() {
+  // Calculate score for time (in seconds)
+  const timeScore = Math.floor((1 / sec) * TIME_WEIGHT);
 
+  // Calculate score for moves
+  const movesScore = (10 / moves) * MOVES_WEIGHT;
+
+  // Calculate total score
+  score = Math.floor((timeScore + movesScore) * difficultyMultiplier);
 }
 
 function endGame() {
