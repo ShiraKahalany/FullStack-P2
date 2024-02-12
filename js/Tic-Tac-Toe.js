@@ -51,40 +51,6 @@ function changePlayer() {
   statusText.textContent = `${currentPlayer}'s turn`;
 }
 
-// function checkWinner() {
-//   let roundWon = false;
-
-//   for (let i = 0; i < winConditions.length; i++) {
-//     const condition = winConditions[i];
-//     const cellA = options[condition[0]];
-//     const cellB = options[condition[1]];
-//     const cellC = options[condition[2]];
-
-//     if (cellA == "" || cellB == "" || cellC == "") {
-//       continue;
-//     }
-
-//     if (cellA == cellB && cellB == cellC) {
-//       roundWon = true;
-//       break;
-//     }
-//   }
-
-//   if (roundWon) {
-//     statusText.textContent = `${currentPlayer} wins!`;
-//     running = false;
-//     if (currentPlayer === "X") {
-//       score = options.filter((option) => option === "X").length;
-//       addScore("ticTacToe", currentUser.userName, 900 - score * 100);
-//     }
-//   } else if (!options.includes("")) {
-//     statusText.textContent = "Draw!";
-//     running = false;
-//   } else {
-//     changePlayer();
-//   }
-// }
-
 function restartGame() {
   currentPlayer = "X";
   options = ["", "", "", "", "", "", "", "", ""];
@@ -111,58 +77,43 @@ function computerMove() {
 }
 
 
+const jsConfetti = new JSConfetti();
 
 function checkWinner() {
   let roundWon = false;
-  let score = 0; // Counter to count the number of "X" on the board
 
   for (let i = 0; i < winConditions.length; i++) {
-      const condition = winConditions[i];
-      const cellA = options[condition[0]];
-      const cellB = options[condition[1]];
-      const cellC = options[condition[2]];
+    const condition = winConditions[i];
+    const cellA = options[condition[0]];
+    const cellB = options[condition[1]];
+    const cellC = options[condition[2]];
 
-      if (cellA == "" || cellB == "" || cellC == "") {
-          continue;
-      }
+    if (cellA == "" || cellB == "" || cellC == "") {
+      continue;
+    }
 
-      if (cellA == cellB && cellB == cellC) {
-          roundWon = true;
-          break;
-      }
+    if (cellA == cellB && cellB == cellC) {
+      roundWon = true;
+      break;
+    }
   }
-
-  // Count the number of "X" on the board
-  score = options.filter(option => option === "X").length;
 
   if (roundWon) {
+    running = false;
+    if (currentPlayer === "X") {
+      score = 900 - ((options.filter((option) => option === "X").length) * 100);
+      addScore("ticTacToe", currentUser.userName, score);
+      statusText.textContent = `${currentPlayer} wins! 
+      *Your Score: ${score}`;
+      jsConfetti.addConfetti().then(() => jsConfetti.addConfetti());
+    }
+    else{
       statusText.textContent = `${currentPlayer} wins!`;
-      running = false;
-      if (currentPlayer === "X") {
-          addScore("ticTacToe", currentUser.userName, 900-(score * 100)); // Pass xCount as the score
-
-          // Display a message and play a sound
-          showMessage("Congratulations! You won!", "winning-message");
-          playSound("victory-sound.mp3");
-      }
+    }
   } else if (!options.includes("")) {
-      statusText.textContent = 'Draw!';
-      running = false;
+    statusText.textContent = "Draw!";
+    running = false;
   } else {
-      changePlayer();
+    changePlayer();
   }
-}
-
-// Function to display a message
-function showMessage(message, className) {
-  const messageElement = document.createElement('div');
-  messageElement.textContent = message;
-  messageElement.classList.add(className);
-  document.body.appendChild(messageElement);
-}
-
-// Function to play a sound
-function playSound(soundFile) {
-  const audio = new Audio(soundFile);
-  audio.play();
 }
