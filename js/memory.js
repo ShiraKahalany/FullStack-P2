@@ -1,5 +1,6 @@
 const gridContainer = document.querySelector(".grid-container");
 const timer = document.getElementById("timer");
+const body = document.querySelector("body");
 
 const TIME_WEIGHT = 100; // Points per second
 const MOVES_WEIGHT = 10; // Points per move
@@ -23,6 +24,11 @@ document.querySelector("button").addEventListener("click", restart);
 
 const difficulty = localStorage.getItem("difficulty");
 const currentUser = getUserFromCookie();
+const canvas = document.getElementById("my-canvas");
+
+var confettiSettings = { target: 'my-canvas' };
+var confetti = new ConfettiGenerator(confettiSettings);
+confetti.render();
 
 switch (difficulty) {
   case "easy":
@@ -174,17 +180,17 @@ function calcMemoryScore() {
   score = Math.floor((timeScore + movesScore) * difficultyMultiplier);
 }
 
-const jsConfetti = new JSConfetti();
+body.addEventListener("click", function stopConffeti() {
+  if (canvas.classList.contains("active")) {
+    canvas.classList.remove("active");
+  }
+});
 
 function endGame() {
   clearInterval(setTimer);
   calcMemoryScore();
   addScore("memory", currentUser.userName, score);
-  jsConfetti
-    .addConfetti({
-      emojis: ["🌈", "⚡️", "💥", "✨", "💫", "🌸"],
-    })
-    .then(() => jsConfetti.addConfetti());
+  canvas.classList.add("active");
 }
 
 
