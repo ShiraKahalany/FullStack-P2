@@ -13,7 +13,7 @@ card2.addEventListener('click', function(event) {
 
 function isLogged(name){
     if(!isLoggedIn()){
-        alert("you are not signed in");
+        alert("You are not signed in, please sign in to continue.");
     } else {
         window.location.href = name;
     }
