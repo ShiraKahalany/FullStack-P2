@@ -16,8 +16,18 @@ function showAlert() {
 function addScore(name, userName, newScore) {
   var scores = JSON.parse(localStorage.getItem(name)) || [];
   var userScore = scores.find((s) => s.userName === userName);
-  if (userScore.score < newScore) {
-    userScore.score = newScore;
+  console.log(userScore);
+  if (userScore) {
+    if (userScore.score < newScore) {
+      userScore.score = newScore;
+      localStorage.setItem(name, JSON.stringify(scores));
+    }
+  } else {
+    scores.push(
+      {
+        userName: userName,
+        score: newScore
+      });
     localStorage.setItem(name, JSON.stringify(scores));
   }
 }

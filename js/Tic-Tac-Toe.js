@@ -139,7 +139,7 @@ function checkWinner() {
       statusText.textContent = `${currentPlayer} wins!`;
       running = false;
       if (currentPlayer === "X") {
-          addScore("Tic-Tac-Toe", currentUser.userName, 900-(score * 100)); // Pass xCount as the score
+          addScore("ticTacToe", currentUser.userName, 900-(score * 100)); // Pass xCount as the score
 
           // Display a message and play a sound
           showMessage("Congratulations! You won!", "winning-message");
