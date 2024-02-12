@@ -174,8 +174,18 @@ function calcMemoryScore() {
   score = Math.floor((timeScore + movesScore) * difficultyMultiplier);
 }
 
+const jsConfetti = new JSConfetti();
+
 function endGame() {
   clearInterval(setTimer);
   calcMemoryScore();
   addScore("memory", currentUser.userName, score);
+  jsConfetti
+    .addConfetti({
+      emojis: ["🌈", "⚡️", "💥", "✨", "💫", "🌸"],
+    })
+    .then(() => jsConfetti.addConfetti());
 }
+
+
+
