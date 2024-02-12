@@ -1,17 +1,15 @@
-const userName = document.getElementById('userName'),
-password = document.getElementById('password'),
-submitBu = document.getElementById('signinSubmit');
+const username = document.getElementById('userName');
+const password = document.getElementById('password');
+const submitBu = document.getElementById('signinSubmit');
 
 submitBu.addEventListener('click', function(event) {
     event.preventDefault(); // Prevent the default form submission
-    submit();
+    submit(event); // Pass the event parameter to the submit function
 });
 
-
-
-function submit() {
+function submit(event) {
     let users = JSON.parse(localStorage.getItem('users')) || [];
-    var user = users.find(user => user.userName === userName.value);
+    var user = users.find(user => user.userName === username.value);
     
     if (user) {
         let failedAttempts = localStorage.getItem('failedAttempts') || 0;
@@ -25,9 +23,12 @@ function submit() {
             failedAttempts++;
             localStorage.setItem('failedAttempts', failedAttempts);
             
-            if (failedAttempts >= 2) {
+            if (failedAttempts >= 3) {
                 alert('You have entered the wrong password 3 times. You are blocked for 30 seconds.');
+                
+                // Hide the button
                 submitBu.style.display = 'none';
+                
                 setTimeout(() => {
                     localStorage.removeItem('failedAttempts');
                     submitBu.style.display = 'block'; // Show the button after unblocking
@@ -40,9 +41,5 @@ function submit() {
     } else {
         alert('This username does not exist.');
     }
+    event.preventDefault();
 }
-
-
-
-
-
