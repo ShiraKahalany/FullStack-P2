@@ -22,7 +22,7 @@ let cards = [],
 // Set initial timer display
 timer.innerText = "0";
 
-// Display initial moves count
+
 document.querySelector(".moves").textContent = moves;
 
 // Event listener for restart button
@@ -31,6 +31,10 @@ document.querySelector("button").addEventListener("click", restart);
 // Retrieve difficulty level and current user
 const difficulty = localStorage.getItem("difficulty");
 const currentUser = getUserFromCookie();
+const canvas = document.getElementById("my-canvas");
+const popup = document.querySelector('.popup');
+const displayScore = document.querySelector('#displayScore');
+
 
 // Set up game based on difficulty level
 switch (difficulty) {
@@ -192,7 +196,7 @@ function calcMemoryScore() {
   const movesScore = (10 / moves) * MOVES_WEIGHT;
 
   // Calculate total score
-  score = Math.floor((timeScore + movesScore) * difficultyMultiplier);
+  score = Math.floor((timeScore + movesScore) * difficultyMultiplier) * 10;
 }
 
 // Trigger confetti animation and end game
@@ -201,9 +205,11 @@ function endGame() {
   clearInterval(setTimer);
   calcMemoryScore();
   addScore("memory", currentUser.userName, score);
-  jsConfetti
-    .addConfetti({
-      emojis: ["🌈", "⚡️", "💥", "✨", "💫", "🌸"],
-    })
-    .then(() => jsConfetti.addConfetti());
+  popup.classList.add('active');
+  displayScore.textContent = `You did it!!!
+  Your Score is: ${score}`;
+  jsConfetti.addConfetti().then(() => jsConfetti.addConfetti());
 }
+
+
+

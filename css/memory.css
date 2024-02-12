@@ -92,3 +92,32 @@
  	width: 50%;
  	margin-left: 43%;
  }
+
+ .popup{
+	position: fixed;
+	left: 50%;
+	top:50%;
+	transform: translate(-50% , -50%);
+	background: #fff;
+	height: 300px;
+	width: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 40px;
+	visibility: hidden;
+ }
+
+ .popup.active{
+	visibility: visible;
+ }
+
+ .close{
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 10px 20px;
+	background: #a33030;
+	color: #fff;
+	cursor: pointer;
+ }
