@@ -11,6 +11,9 @@ const updateButton = document.getElementById('updateDetails');
 console.log(updateButton);
 updateButton.addEventListener('click', update);
 
+displayTable("memory");
+displayTable("ticTacToe");
+
 function update() {
     let users = JSON.parse(localStorage.getItem('users')) || [];
     
@@ -25,45 +28,20 @@ function update() {
     }
 }
 
-
-// Load memory game scores
-fetch("/json/memory.json")
-.then(response => response.json())
-.then(memoryScores => {
-    const memoryTable = document.getElementById('memoryTable');
-    if (memoryScores.length > 0) {
-        memoryTable.style.display = 'block'; // Display the table
-        const memoryScoresTable = document.getElementById('memoryScores');
-        memoryScores.forEach(score => {
+function displayTable(name){
+    var scores = JSON.parse(localStorage.getItem(name)) || [];
+    const table = document.getElementById(name + 'Table');
+    if (scores.length > 0){
+        table.style.display = 'block'; // Display the table
+        const scoresTable = document.getElementById(name + 'Scores');
+        scores.forEach(score => {
             const row = document.createElement('tr');
             row.innerHTML = `<td>${score.userName}</td><td>${score.score}</td>`;
-            memoryScoresTable.appendChild(row);
+            scoresTable.appendChild(row);
         });
     } else {
-        memoryTable.style.display = 'none'; // Hide the table
+        table.style.display = 'none'; // Hide the table
     }
-})
-.catch(error => console.error('Error loading memory game scores:', error));
-
-// Load Tic Tac Toe game scores
-fetch("/json/Tic-Tac-Toe.json")
-.then(response => response.json())
-.then(ticTacToeScores => {
-    const ticTacToeTable = document.getElementById('ticTacToeTable');
-    if (ticTacToeScores.length > 0) {
-        ticTacToeTable.style.display = 'block'; // Display the table
-        const ticTacToeScoresTable = document.getElementById('ticTacToeScores');
-        ticTacToeScores.forEach(score => {
-            const row = document.createElement('tr');
-            row.innerHTML = `<td>${score.userName}</td><td>${score.score}</td>`;
-            ticTacToeScoresTable.appendChild(row);
-        });
-    } else {
-        ticTacToeTable.style.display = 'none'; // Hide the table
-    }
-})
-.catch(error => console.error('Error loading Tic Tac Toe game scores:', error));
-
-
+}
 
 

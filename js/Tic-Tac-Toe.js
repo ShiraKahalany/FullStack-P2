@@ -75,7 +75,7 @@ function checkWinner() {
     running = false;
     if (currentPlayer === "X") {
       score = options.filter((option) => option === "X").length;
-      addScore("Tic-Tac-Toe", currentUser.userName, 900 - score * 100);
+      addScore("ticTacToe", currentUser.userName, 900 - score * 100);
     }
   } else if (!options.includes("")) {
     statusText.textContent = "Draw!";

@@ -7,7 +7,7 @@ let firstCard, secondCard;
 let lockBoard = false;
 let moves = 0;
 let sec = 0;
-let score = 200;
+let score = 0;
 timer.innerText = "0";
 let setTimer;
 
@@ -150,7 +150,12 @@ function stopwatch() {
   }
 }
 
+function calcMemoryScore(){
+
+}
+
 function endGame() {
   clearInterval(setTimer);
+  calcMemoryScore();
   addScore("memory", currentUser.userName, score);
 }

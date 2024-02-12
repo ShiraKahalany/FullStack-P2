@@ -13,12 +13,12 @@ function showAlert() {
   alert("This feature is still under development.");
 }
 
-function addScore(fileName, userName, newScore) {
-  var scores = localStorage.getItem("name");
+function addScore(name, userName, newScore) {
+  var scores = JSON.parse(localStorage.getItem(name)) || [];
   var userScore = scores.find((s) => s.userName === userName);
   if (userScore.score < newScore) {
     userScore.score = newScore;
-    localStorage.setItem("name", JSON.stringify(scores));
+    localStorage.setItem(name, JSON.stringify(scores));
   }
 }
   
