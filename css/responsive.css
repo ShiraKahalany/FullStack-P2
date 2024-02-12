@@ -6,12 +6,10 @@
     .card {
         width: 40%; /* Adjust the width for smaller screens */
     }
-
     .row {
         flex-wrap: wrap;
         align-items: center;
     } 
-
 }
 
 
