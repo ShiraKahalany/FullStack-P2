@@ -22,3 +22,6 @@ function addScore(name, userName, newScore) {
   }
 }
   
+function resetFailedAttempts() {
+  localStorage.setItem('failedAttempts', 0);
+}
