@@ -14,7 +14,8 @@ const winConditions =[
 let options =["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
 let running = false;
-
+const currentUser = localStorage.getItem("currentUser");
+let score = 0;
 
 initializeGame();
 
@@ -76,6 +77,12 @@ function checkWinner(){
     if(roundWon){
         statusText.textContent = `${currentPlayer} wins!`;
         running = false;
+        if(currentPlayer==="X")
+        {
+            score = options.filter(option => option === "X").length;
+            addScore("Tic-Tac-Toe", currentUser.userName, 900-(score*100));
+
+        }
     }
     else if(!options.includes("")){
         statusText.textContent = 'Draw!';
@@ -93,6 +100,7 @@ function restartGame(){
     statusText.textContent = `${currentPlayer}'s turn`;
     cells.forEach(cell => cell.textContent="");
     running = true;
+    score= 0;
 }
 
 
