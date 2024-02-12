@@ -1,4 +1,4 @@
-/**** Overall styling ****/
+/**** Overall style ****/
 
 *{
     box-sizing: border-box;
@@ -48,7 +48,6 @@ button {
     height: 2.4em; 
     width: 6.6em;
     margin: 1em 0em;
-    /* font-weight: bold; */
     text-align: center;
   }
   

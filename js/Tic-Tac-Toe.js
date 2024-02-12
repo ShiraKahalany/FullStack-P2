@@ -103,8 +103,7 @@ function checkWinner() {
     if (currentPlayer === "X") {
       score = 900 - ((options.filter((option) => option === "X").length) * 100);
       addScore("ticTacToe", currentUser.userName, score);
-      statusText.textContent = `${currentPlayer} wins! 
-      *Your Score: ${score}`;
+      statusText.textContent = `${currentPlayer} wins! Your Score: ${score}`;
       jsConfetti.addConfetti().then(() => jsConfetti.addConfetti());
     }
     else{

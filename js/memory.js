@@ -1,50 +1,60 @@
+// Retrieve DOM elements
 const gridContainer = document.querySelector(".grid-container");
 const timer = document.getElementById("timer");
 
+// Constants for scoring
 const TIME_WEIGHT = 100; // Points per second
 const MOVES_WEIGHT = 10; // Points per move
 
+// Variables for game state
 let cards = [],
-cardCount,
-flipCarsCount = 0, 
-firstCard, secondCard, 
-lockBoard = false,
-moves = 0,
-sec = 0,
-score = 0,
-setTimer,
-difficultyMultiplier = 1.0; // for the score
+  cardCount,
+  flipCarsCount = 0,
+  firstCard,
+  secondCard,
+  lockBoard = false,
+  moves = 0,
+  sec = 0,
+  score = 0,
+  setTimer,
+  difficultyMultiplier = 1.0; // for the score
 
+// Set initial timer display
 timer.innerText = "0";
 
-
+// Display initial moves count
 document.querySelector(".moves").textContent = moves;
+
+// Event listener for restart button
 document.querySelector("button").addEventListener("click", restart);
 
+// Retrieve difficulty level and current user
 const difficulty = localStorage.getItem("difficulty");
 const currentUser = getUserFromCookie();
 
+// Set up game based on difficulty level
 switch (difficulty) {
   case "easy":
     gridContainer.classList.add("easy");
     cardCount = 3;
-	difficultyMultiplier = 1.0;
+    difficultyMultiplier = 1.0;
     break;
   case "medium":
     gridContainer.classList.add("medium");
     cardCount = 4;
-	difficultyMultiplier = 1.5;
+    difficultyMultiplier = 1.5;
     break;
   case "hard":
     gridContainer.classList.add("hard");
     cardCount = 8;
-	difficultyMultiplier = 2.0;
+    difficultyMultiplier = 2.0;
     break;
   default:
     gridContainer.classList.add("medium");
     cardCount = 4;
 }
 
+// Fetch and set up game cards
 fetch("/json/cards.json")
   .then((res) => res.json())
   .then((data) => {
@@ -55,6 +65,7 @@ fetch("/json/cards.json")
     generateCards();
   });
 
+// Start timer on first click
 function setTime() {
   gridContainer.addEventListener("click", function clickOnce() {
     clearInterval(setTimer);
@@ -63,6 +74,7 @@ function setTime() {
   });
 }
 
+// Shuffle the cards
 function shuffleCards() {
   let currentIndex = cardCount,
     randomIndex,
@@ -76,6 +88,7 @@ function shuffleCards() {
   }
 }
 
+// Generate HTML for cards
 function generateCards() {
   for (let card of cards) {
     const cardElement = document.createElement("div");
@@ -92,6 +105,7 @@ function generateCards() {
   }
 }
 
+// Flip a card on click
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
@@ -114,6 +128,7 @@ function flipCard() {
   checkForMatch();
 }
 
+// Check if the flipped cards match
 function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
   if (isMatch) {
@@ -127,6 +142,7 @@ function checkForMatch() {
   }
 }
 
+// Disable matched cards
 function disableCards() {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
@@ -134,6 +150,7 @@ function disableCards() {
   resetBoard();
 }
 
+// Flip unmatched cards back
 function unflipCards() {
   setTimeout(() => {
     firstCard.classList.remove("flipped");
@@ -142,16 +159,19 @@ function unflipCards() {
   }, 1000);
 }
 
+// Reset board after each move
 function resetBoard() {
   firstCard = null;
   secondCard = null;
   lockBoard = false;
 }
 
+// Restart the game
 function restart() {
   window.location.href = "/html/difficulty.html";
 }
 
+// Update timer display every second
 function stopwatch() {
   sec += 1;
   if (sec < 60) {
@@ -163,6 +183,7 @@ function stopwatch() {
   }
 }
 
+// Calculate score based on time and moves
 function calcMemoryScore() {
   // Calculate score for time (in seconds)
   const timeScore = Math.floor((1 / sec) * TIME_WEIGHT);
@@ -174,8 +195,8 @@ function calcMemoryScore() {
   score = Math.floor((timeScore + movesScore) * difficultyMultiplier);
 }
 
+// Trigger confetti animation and end game
 const jsConfetti = new JSConfetti();
-
 function endGame() {
   clearInterval(setTimer);
   calcMemoryScore();
@@ -186,6 +207,3 @@ function endGame() {
     })
     .then(() => jsConfetti.addConfetti());
 }
-
-
-

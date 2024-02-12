@@ -1,17 +1,12 @@
+// Function to set a cookie with a specified name, value, and expiration time
 function setCookie(name, value, hoursToLive){
     const date = new Date();
-    date.setTime(date.getTime() +  (hoursToLive * 60 * 60 * 1000)); // converting hours to milliseconds
+    date.setTime(date.getTime() +  (hoursToLive * 60 * 60 * 1000)); // Convert hours to milliseconds
     let expires = "expires=" + date.toUTCString();
     document.cookie = `${name}=${value}; ${expires}; path=/`;
 }
 
-// function setCookie(name, value, minutesToLive){
-//     const date = new Date();
-//     date.setTime(date.getTime() +  (minutesToLive * 60 * 1000)); // converting minutes to milliseconds
-//     let expires = "expires=" + date.toUTCString();
-//     document.cookie = `${name}=${value}; ${expires}; path=/`;
-// }
-
+// Function to retrieve user information from cookie
 function getUserFromCookie() {
     var name = "user=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -26,6 +21,7 @@ function getUserFromCookie() {
     return null; // Return null if user cookie is not found
 }
 
+// Function to delete a cookie by setting its expiration time to a past date
 function deleteCookie(name){
     setCookie(name, null, null);
 }
