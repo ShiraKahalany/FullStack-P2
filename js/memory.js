@@ -114,7 +114,7 @@ function flipCard() {
 
   this.classList.add("flipped");
 
-  var audio = new Audio('/img/76271.mp3'); // Provide the path to your sound file
+  var audio = new Audio('/img/76271.mp3');
   audio.play();
 
   if (!firstCard) {
@@ -199,6 +199,7 @@ function calcMemoryScore() {
 
 // Trigger confetti animation and end game
 const jsConfetti = new JSConfetti();
+
 function endGame() {
   clearInterval(setTimer);
   calcMemoryScore();

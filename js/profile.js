@@ -30,6 +30,7 @@ function update() {
 
 function displayTable(name){
     var scores = JSON.parse(localStorage.getItem(name)) || [];
+    scores.sort((a, b) => b.score - a.score);
     const table = document.getElementById(name + 'Table');
     if (scores.length > 0){
         table.style.display = 'block'; // Display the table
