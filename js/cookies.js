@@ -6,6 +6,14 @@ function setCookie(name, value, hoursToLive){
     document.cookie = `${name}=${value}; ${expires}; path=/`;
 }
 
+// // Function to set a cookie with a specified name, value, and expiration time
+// function setCookie(name, value, minutesToLive){
+//     const date = new Date();
+//     date.setTime(date.getTime() +  (minutesToLive * 60 * 1000)); // Convert hours to milliseconds
+//     let expires = "expires=" + date.toUTCString();
+//     document.cookie = `${name}=${value}; ${expires}; path=/`;
+// }
+
 // Function to retrieve user information from cookie
 function getUserFromCookie() {
     var name = "user=";
