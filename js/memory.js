@@ -44,12 +44,12 @@ switch (difficulty) {
   case "medium":
     gridContainer.classList.add("medium");
     cardCount = 4;
-    difficultyMultiplier = 1.5;
+    difficultyMultiplier = 3.0;
     break;
   case "hard":
     gridContainer.classList.add("hard");
     cardCount = 8;
-    difficultyMultiplier = 2.0;
+    difficultyMultiplier = 6.0;
     break;
   default:
     gridContainer.classList.add("medium");
