@@ -20,6 +20,7 @@ Memory is a card-matching game that tests your ability to remember the positions
 
 - **User-Friendly Interface**: Easy to navigate and play.
 - **Interactive Gameplay**: Real-time feedback and updates as you play the games.
+- **Persistent Data**: User data is saved in the local storage in JSON format to preserve game progress.
 
 ## How to Play
 
@@ -37,6 +38,7 @@ Memory is a card-matching game that tests your ability to remember the positions
 3. If the cards match, they stay flipped. If not, they flip back over.
 4. Continue until all pairs are matched.
 5. Try to match all pairs in the least number of moves.
+6. Choose from three levels of difficulty to challenge your memory.
 
 ## Installation
 
